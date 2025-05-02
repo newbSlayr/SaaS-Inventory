@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inventory Management System for SMBs 
 
-## Getting Started
+This is a cloud-based inventory management system designed for small to medium businesses. Developed as part of my final year Synoptic Project, it demonstrates how SaaS-based platforms can reduce operational overhead and improve inventory accuracy without enterprise-level complexity.
 
-First, run the development server:
+---
+
+## Live Demo
+
+Deployed via Docker to Google Cloud Run:  
+**URL:** https://nextjs-app-640515661608.europe-west1.run.app/dashboard
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 15  + Tailwind CSS
+- **Backend:** Firebase Firestore 
+- **Deployment:** Docker + Google Cloud Run
+- **Cloud Build:** Used for containerisation
+---
+
+## Features
+
+- Real-time stock updates
+- Dashboard with item count, stock value, and category breakdowns
+- Low-stock alert logic
+- Add, edit, and delete inventory items
+- Containerised via Docker 
+
+---
+
+## Setup Instructions
+
+### 1. Download the repository
+
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Add your `.env.local` file in root with Firebase config
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+### 4. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Google Cloud Run 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Login to Google Cloud 
+```bash 
+gcloud auth login
+```
 
-## Learn More
+### 2. Create Google cloud Project (If not already done so)
+```bash 
+gcloud projects create your-project-id --name="Inventory System"
+```
+Then set it as your active project:
+```bash
+gcloud config set project your-project-id
+```
+### 3. Enable Required APIs
+```bash
+gcloud services enable run.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+```
+### 4. Set your GCP Project
+```bash
+gcloud config set project <your-project-id>
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5.Configure `
+Within the deploy.sh script add your project id from GCP
+```bash
+PROJECT_ID="your_project_id"
+```
+Save and run 
+```bash
+./deploy.sh
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cloud Run will build, push, and deploy the container using the latest Dockerfile.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Project Origin
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Created as part of the final-year Synoptic Project at Manchester Metropolitan University.
+#
+**Research Question:**  
+*“How does SaaS-based inventory management impact inventory efficiency and operational cost for SMBs?”*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Author
+
+Hilton Man-Tim Coong  
+[Email](212428731@stu.mmu.ac.uk)
+
+---
+
