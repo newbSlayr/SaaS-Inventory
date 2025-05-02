@@ -32,7 +32,10 @@ Deployed via Docker to Google Cloud Run:
 ## Setup Instructions
 
 ### 1. Download the repository
-
+```bash
+git clone https://github.com/newbSlayr/SaaS-Inventory.git
+cd app
+```
 
 ### 2. Install dependencies
 
